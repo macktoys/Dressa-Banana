@@ -1,0 +1,352 @@
+
+<!-- Thanks for checking out Mack Toys Dressa Banana!  Hope you have an awesome day! -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://macktoys.com/Mack_Toys_Favicon_1.svg" sizes="any" type="image/svg+xml">
+    <title>Mack Toys Games - Dressa Banana!</title>
+    
+    <!-- Added meta tags for SEO -->
+    <meta name="description" content="Play Dressa Banana, a fun and interactive game by Mack Toys. Customize your banana with lots of accessories!">
+    <meta name="keywords" content="Mack Toys, dress up game, banana game, interactive game, kids game, character dress up">
+    <meta name="author" content="Mack Toys">
+
+    <!-- Open Graph tags for better social media sharing -->
+    <meta property="og:title" content="Mack Toys Games - Dressa Banana!">
+    <meta property="og:description" content="Play Dressa Banana, a fun and interactive game by Mack Toys. Customize your banana with lots of accessories!">
+    <meta property="og:image" content="https://macktoys.com/games/dressa-banana/Mack_Toys_Dressa_Banana_300_400_2.svg">
+    <meta property="og:url" content="https://macktoys.com/games/dressa-banana">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mack Toys Games - Dressa Banana!">
+    <meta name="twitter:description" content="Play Dressa Banana, a fun and interactive game by Mack Toys. Customize your banana with lots of accessories!">
+    <meta name="twitter:image" content="https://macktoys.com/games/dressa-banana/Mack_Toys_Dressa_Banana_300_400_2.svg">
+
+    <!-- Additional meta tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <link rel="canonical" href="https://macktoys.com/games/dressa-banana">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .game-container {
+            display: flex;
+            gap: 20px;
+        }
+        .pickle-container {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            border: 1px solid #000;
+            background-color: white;
+        }
+        .pickle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://macktoys.com/games/dressa-banana/Mack_Toys_Dressa_Banana_300_400_2.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 1;
+        }
+        .accessories-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+        .accessory {
+            position: absolute;
+            cursor: move;
+            z-index: 3;
+            touch-action: none;
+        }
+        .accessories-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .accessory-type {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+        .accessory-slot {
+            width: 60px;
+            height: 60px;
+            border: 1px dashed #999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: move;
+        }
+        .accessory-slot img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="pickle-container">
+            <div class="pickle" id="pickle"></div>
+            <div class="accessories-layer" id="accessories-layer"></div>
+        </div>
+        <div class="accessories-menu">
+            <div class="accessory-type" id="hats">
+                <div class="accessory-slot"><img src="https://macktoys.com/games/dress-a-pickle/Mack_Toys_Pickle_Hat_1.svg" draggable="true" data-type="hat"></div>
+                <div class="accessory-slot"><img src="https://macktoys.com/games/dress-a-pickle/Mack_Toys_Pickle_Hat_2.svg" draggable="true" data-type="hat"></div>
+                <div class="accessory-slot"><img src="https://macktoys.com/games/dress-a-pickle/Mack_Toys_Pickle_Hat_3.svg" draggable="true" data-type="hat"></div>
+                <div class="accessory-slot"><img src="https://macktoys.com/games/dress-a-pickle/Mack_Toys_Pickle_Hat_4.svg" draggable="true" data-type="hat"></div>
+            </div>
+            <div class="accessory-type" id="glasses">
+                <div class="accessory-slot"><img src="https://macktoys.com/games/dress-a-pickle/Mack_Toys_Pickle_Glasses_1.svg" draggable="true" data-type="glasses"></div>
+                <div class="accessory-slot"><img src="https://macktoys.com/games/dress-a-pickle/Mack_Toys_Pickle_Glasses_2.svg" draggable="true" data-type="glasses"></div>
+                <div class="accessory-slot"><img src="https://macktoys.com/games/dress-a-pickle/Mack_Toys_Pickle_Glasses_3.svg" draggable="true" data-type="glasses"></div>
+                <div class="accessory-slot"><img src="https://macktoys.com/games/dress-a-pickle/Mack_Toys_Pickle_Glasses_4.svg" draggable="true" data-type="glasses"></div>
+            </div>
+            <div class="accessory-type" id="shirts">
+                <div class="accessory-slot"><img src="https://macktoys.com/games/dress-a-pickle/Mack_Toys_Pickle_Extra_1.svg" draggable="true" data-type="shirt"></div>
+                <div class="accessory-slot"><img src="https://macktoys.com/games/dress-a-pickle/Mack_Toys_Pickle_Extra_2.svg" draggable="true" data-type="shirt"></div>
+                <div class="accessory-slot"><img src="https://macktoys.com/games/dress-a-pickle/Mack_Toys_Pickle_Extra_3.svg" draggable="true" data-type="shirt"></div>
+                <div class="accessory-slot"><img src="https://macktoys.com/games/dress-a-pickle/Mack_Toys_Pickle_Extra_5.svg" draggable="true" data-type="shirt"></div>
+            </div>
+            <div class="accessory-type" id="shoes">
+                <div class="accessory-slot"><img src="https://macktoys.com/games/dress-a-pickle/Mack_Toys_Pickle_Shoes_12.svg" draggable="true" data-type="shoes"></div>
+                <div class="accessory-slot"><img src="https://macktoys.com/games/dress-a-pickle/Mack_Toys_Pickle_Shoes_22.svg" draggable="true" data-type="shoes"></div>
+                <div class="accessory-slot"><img src="https://macktoys.com/games/dress-a-pickle/Mack_Toys_Pickle_Shoes_33.svg" draggable="true" data-type="shoes"></div>
+                <div class="accessory-slot"><img src="https://macktoys.com/games/dress-a-pickle/Mack_Toys_Pickle_Shoes_44.svg" draggable="true" data-type="shoes"></div>
+            </div>
+            <button onclick="resetPickle()">Reset</button>
+            <button onclick="downloadImage()">Download Banana</button>
+        </div>
+    </div>
+    <div style="text-align: center; position: fixed; bottom: 10px; width: 100%;">
+    <a href="https://macktoys.com">Mack Toys</a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        const pickleContainer = document.querySelector('.pickle-container');
+        const accessoriesLayer = document.getElementById('accessories-layer');
+        const accessorySlots = document.querySelectorAll('.accessory-slot');
+        let draggedItem = null;
+
+        accessorySlots.forEach(slot => {
+            slot.addEventListener('dragstart', dragStart);
+            slot.addEventListener('dragend', dragEnd);
+        });
+
+        pickleContainer.addEventListener('dragover', dragOver);
+        pickleContainer.addEventListener('drop', drop);
+
+        function dragStart(e) {
+            draggedItem = e.target;
+            e.dataTransfer.setData('text/plain', draggedItem.dataset.type);
+            setTimeout(() => (draggedItem.style.opacity = '0.5'), 0);
+        }
+
+        function dragEnd(e) {
+            if (draggedItem) {
+                draggedItem.style.opacity = '';
+                draggedItem = null;
+            }
+        }
+
+        function dragOver(e) {
+            e.preventDefault();
+        }
+
+        function drop(e) {
+            e.preventDefault();
+            if (draggedItem) {
+                const type = e.dataTransfer.getData('text');
+                const existingAccessory = accessoriesLayer.querySelector(`[data-type="${type}"]`);
+                if (existingAccessory) {
+                    existingAccessory.remove();
+                }
+                const newAccessory = draggedItem.cloneNode(true);
+                newAccessory.classList.add('accessory');
+                newAccessory.setAttribute('data-type', type);
+                newAccessory.style.opacity = '';
+                
+                const rect = pickleContainer.getBoundingClientRect();
+                const x = e.clientX - rect.left - newAccessory.width / 2;
+                const y = e.clientY - rect.top - newAccessory.height / 2;
+                
+                newAccessory.style.left = `${x}px`;
+                newAccessory.style.top = `${y}px`;
+                
+                accessoriesLayer.appendChild(newAccessory);
+                makeAccessoryDraggable(newAccessory);
+            }
+        }
+
+        function makeAccessoryDraggable(accessory) {
+            let isDragging = false;
+            let startX, startY;
+
+            const onMouseDown = (e) => {
+                isDragging = true;
+                startX = e.clientX - accessory.offsetLeft;
+                startY = e.clientY - accessory.offsetTop;
+                accessory.style.cursor = 'grabbing';
+                e.preventDefault(); // Prevent default drag behavior
+            };
+
+            const onMouseMove = (e) => {
+                if (!isDragging) return;
+                const x = e.clientX - startX;
+                const y = e.clientY - startY;
+                accessory.style.left = `${x}px`;
+                accessory.style.top = `${y}px`;
+
+                // Check if the accessory is back over its original slot
+                const slot = findOriginalSlot(accessory);
+                if (slot) {
+                    const slotRect = slot.getBoundingClientRect();
+                    if (e.clientX >= slotRect.left && e.clientX <= slotRect.right &&
+                        e.clientY >= slotRect.top && e.clientY <= slotRect.bottom) {
+                        accessory.remove();
+                        isDragging = false;
+                    }
+                }
+            };
+
+            const onMouseUp = () => {
+                isDragging = false;
+                accessory.style.cursor = 'move';
+            };
+
+            accessory.addEventListener('mousedown', onMouseDown);
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+
+            // Touch events for mobile devices
+            accessory.addEventListener('touchstart', (e) => {
+                const touch = e.touches[0];
+                onMouseDown({ clientX: touch.clientX, clientY: touch.clientY, preventDefault: () => e.preventDefault() });
+            });
+            document.addEventListener('touchmove', (e) => {
+                const touch = e.touches[0];
+                onMouseMove({ clientX: touch.clientX, clientY: touch.clientY });
+            });
+            document.addEventListener('touchend', onMouseUp);
+        }
+
+        function findOriginalSlot(accessory) {
+            const type = accessory.getAttribute('data-type');
+            const src = accessory.getAttribute('src');
+            return Array.from(accessorySlots).find(slot => 
+                slot.querySelector('img').getAttribute('data-type') === type &&
+                slot.querySelector('img').getAttribute('src') === src
+            );
+        }
+
+        function resetPickle() {
+            accessoriesLayer.innerHTML = '';
+        }
+
+        function downloadImage() {
+            const svgNS = "http://www.w3.org/2000/svg";
+            const svg = document.createElementNS(svgNS, "svg");
+            svg.setAttribute("width", pickleContainer.offsetWidth * 3);
+            svg.setAttribute("height", pickleContainer.offsetHeight * 3);
+            svg.setAttribute("viewBox", `0 0 ${pickleContainer.offsetWidth} ${pickleContainer.offsetHeight}`);
+
+            // Add white background
+            const background = document.createElementNS(svgNS, "rect");
+            background.setAttribute("width", "100%");
+            background.setAttribute("height", "100%");
+            background.setAttribute("fill", "white");
+            svg.appendChild(background);
+
+            // Add banana
+            const pickle = document.createElementNS(svgNS, "image");
+            pickle.setAttributeNS("http://www.w3.org/1999/xlink", "href", "https://macktoys.com/games/dressa-banana/Mack_Toys_Dressa_Banana_300_400_2.svg");
+            pickle.setAttribute("width", "100%");
+            pickle.setAttribute("height", "100%");
+            svg.appendChild(pickle);
+
+            // Add accessories
+            const accessories = accessoriesLayer.querySelectorAll('.accessory');
+            accessories.forEach(accessory => {
+                const accessoryImage = document.createElementNS(svgNS, "image");
+                accessoryImage.setAttributeNS("http://www.w3.org/1999/xlink", "href", accessory.src);
+                accessoryImage.setAttribute("x", accessory.style.left);
+                accessoryImage.setAttribute("y", accessory.style.top);
+                accessoryImage.setAttribute("width", accessory.offsetWidth + "px");
+                accessoryImage.setAttribute("height", accessory.offsetHeight + "px");
+                svg.appendChild(accessoryImage);
+            });
+
+            // Convert SVG to a data URL
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const svgBlob = new Blob([svgData], {type: "image/svg+xml;charset=utf-8"});
+            const svgUrl = URL.createObjectURL(svgBlob);
+
+            // Open in new tab and trigger print
+            const newTab = window.open(svgUrl, '_blank');
+            newTab.onload = function() {
+                newTab.print();
+                // Clean up
+                URL.revokeObjectURL(svgUrl);
+            };
+        }
+
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            
+            html2canvas(pickleContainer, {
+                backgroundColor: '#ffffff',
+                scale: 3,
+                useCORS: true,
+                allowTaint: true,
+                logging: false,
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png', 1.0);
+                const pdf = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: 'a4'
+                });
+                
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                const imgWidth = canvas.width;
+                const imgHeight = canvas.height;
+                const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+                
+                const imgX = (pdfWidth - imgWidth * ratio) / 2;
+                const imgY = 30;
+
+                pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+                pdf.save('dressed-banana.pdf');
+            });
+        }
+    </script>
+</body>
+</html>
+
+<!-- Copyright 2024 Mack Toys, Inc.  All rights reserved. -->
